@@ -1,0 +1,14 @@
+node_modules/
+dist/
+unpackage/
+.env
+.env.*
+!.env.example
+project.private.config.json
+*.log
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.pem
+*.key

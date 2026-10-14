@@ -1,0 +1,141 @@
+export function createSeed(now = new Date()) {
+  // 让演示计划始终在未来；不是预制的匹配结果。
+  const day = new Date(now.getTime() + 3 * 86400000 + 8 * 3600000)
+    .toISOString()
+    .slice(0, 10)
+  const at = (time) => `${day}T${time}:00+08:00`
+  const common = {
+    campusId: 'demo-campus',
+    campusName: '示例校区',
+    visibility: 'public',
+    createdAt: now.toISOString(),
+    images: []
+  }
+  const users = [
+    {
+      id: 'user_demo_a',
+      nickname: '小林',
+      campusId: 'demo-campus',
+      campusName: '示例校区',
+      skillTags: ['摄影', 'Python'],
+      bio: '这是虚构的演示资料。'
+    },
+    {
+      id: 'user_demo_b',
+      nickname: '小桃',
+      campusId: 'demo-campus',
+      campusName: '示例校区',
+      skillTags: ['设计', '英语'],
+      bio: '想在校园找到一起做事的人。'
+    },
+    {
+      id: 'user_demo_c',
+      nickname: '小禾',
+      campusId: 'demo-campus',
+      campusName: '示例校区',
+      skillTags: ['吉他'],
+      bio: '分享闲置，也分享一点小技能。'
+    }
+  ]
+  return {
+    version: 1,
+    currentUserId: users[0].id,
+    users,
+    contents: {
+      plan: [
+        {
+          ...common,
+          id: 'plan_demo_a',
+          ownerId: users[0].id,
+          type: 'plan',
+          title: '周末上午一起看电影',
+          body: '片子可以一起商量，看完顺路吃饭。',
+          category: '电影',
+          location: '校门口电影院',
+          startAt: at('09:00'),
+          endAt: at('12:00'),
+          capacity: 2,
+          memberIds: [users[0].id],
+          status: 'open'
+        },
+        {
+          ...common,
+          id: 'plan_demo_b',
+          ownerId: users[1].id,
+          type: 'plan',
+          title: '上午找个电影搭子',
+          body: '希望找同校同学一起去。',
+          category: '电影',
+          location: '校门口电影院',
+          startAt: at('10:00'),
+          endAt: at('12:30'),
+          capacity: 2,
+          memberIds: [users[1].id],
+          status: 'open'
+        },
+        {
+          ...common,
+          id: 'plan_demo_c',
+          ownerId: users[2].id,
+          type: 'plan',
+          title: '傍晚操场散步',
+          body: '绕操场走两圈，放松一下。',
+          category: '散步',
+          location: '操场',
+          startAt: at('17:00'),
+          endAt: at('18:00'),
+          capacity: 3,
+          memberIds: [users[2].id],
+          status: 'open'
+        }
+      ],
+      market: [
+        {
+          ...common,
+          id: 'market_demo_lamp',
+          ownerId: users[1].id,
+          type: 'market',
+          title: '闲置护眼台灯',
+          body: '使用半年，灯光正常，校内当面查看。',
+          category: '生活用品',
+          priceCents: 3500,
+          location: '图书馆门口',
+          status: 'active'
+        }
+      ],
+      lost_found: [
+        {
+          ...common,
+          id: 'lost_demo_card',
+          ownerId: users[2].id,
+          type: 'lost_found',
+          title: '图书馆捡到一个卡套',
+          body: '请描述卡套外观确认归属，不公开卡内个人信息。',
+          category: '拾获',
+          location: '图书馆二楼',
+          status: 'active'
+        }
+      ],
+      help: [
+        {
+          ...common,
+          id: 'help_demo_photo',
+          ownerId: users[0].id,
+          type: 'help',
+          title: '想请同学教一下摄影构图',
+          body: '可以交换 Python 入门讲解。',
+          category: '摄影',
+          location: '校园内',
+          status: 'open'
+        }
+      ]
+    },
+    invitations: [],
+    conversations: [],
+    messages: [],
+    notifications: [],
+    favorites: [],
+    reports: [],
+    idempotency: {}
+  }
+}

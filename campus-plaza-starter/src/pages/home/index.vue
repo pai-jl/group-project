@@ -1,0 +1,121 @@
+<template>
+  <view class="page">
+    <DemoNotice />
+    <view class="title">自己的家</view>
+    <view v-if="error" class="error">{{ error }}</view>
+    <view v-if="profile" class="panel">
+      <view class="row">
+        <view>
+          <view class="section-title" style="margin-top: 0">
+            {{ profile.nickname }}
+          </view>
+          <view class="muted">{{ profile.campusName }}</view>
+        </view>
+        <view class="tag">个人空间</view>
+      </view>
+      <view class="body" style="margin-top: 18rpx">{{ profile.bio }}</view>
+      <view class="actions">
+        <text class="tag" v-for="skill in profile.skillTags" :key="skill">
+          {{ skill }}
+        </text>
+      </view>
+      <view class="actions">
+        <button class="secondary" @tap="publicProfile">查看我的公开主页</button>
+        <button class="secondary" @tap="askSubscription">接收匹配通知</button>
+      </view>
+    </view>
+    <view v-if="isMock" class="panel">
+      <view class="section-title" style="margin-top: 0">演示身份</view>
+      <view class="muted">
+        同一设备切换身份可检查邀请与留言；不是微信登录，也不是多人在线。
+      </view>
+      <view class="actions">
+        <button
+          v-for="u in users"
+          :key="u.id"
+          :class="u.id === profile?.id ? 'primary' : 'secondary'"
+          @tap="switchUser(u.id)"
+        >
+          {{ u.nickname }}
+        </button>
+        <button class="danger" @tap="reset">重置本机演示</button>
+      </view>
+    </view>
+    <view class="section-title">我的发布</view>
+    <ContentCard v-for="item in items" :key="item.id" :item="item" />
+    <EmptyState v-if="!items.length && !error" title="还没有发布" />
+    <button v-if="cursor" class="secondary" @tap="loadMore">加载更多</button>
+  </view>
+</template>
+<script setup>
+import { ref } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
+import { user, myContent } from '../../services/index.js'
+import { demoUsers, switchDemoUser, resetDemo } from '../../mock/index.js'
+import { config } from '../../config/index.js'
+import { openProfile } from '../../utils/routes.js'
+import { errorText } from '../../utils/errors.js'
+import { requestSubscription } from '../../platform/subscription.js'
+import DemoNotice from '../../components/DemoNotice.vue'
+import ContentCard from '../../components/ContentCard.vue'
+import EmptyState from '../../components/EmptyState.vue'
+const profile = ref(null),
+  items = ref([]),
+  error = ref(''),
+  users = ref([]),
+  cursor = ref(null),
+  isMock = config.apiMode === 'mock'
+async function load() {
+  error.value = ''
+  try {
+    profile.value = await user.getProfile()
+    const r = await myContent.list()
+    items.value = r.items
+    cursor.value = r.nextCursor
+    users.value = demoUsers()
+  } catch (e) {
+    error.value = errorText(e)
+  }
+}
+async function loadMore() {
+  try {
+    const r = await myContent.list({ cursor: cursor.value })
+    items.value.push(...r.items)
+    cursor.value = r.nextCursor
+  } catch (e) {
+    error.value = errorText(e)
+  }
+}
+function publicProfile() {
+  openProfile(profile.value.id)
+}
+function switchUser(id) {
+  switchDemoUser(id)
+  load()
+}
+function reset() {
+  uni.showModal({
+    title: '重置演示',
+    content: '会清除这台设备上的演示发布、邀请、留言和收藏。',
+    success: (r) => {
+      if (r.confirm) {
+        resetDemo()
+        load()
+      }
+    }
+  })
+}
+async function askSubscription() {
+  try {
+    const result = await requestSubscription()
+    const accepted = Object.values(result).some((v) => v === 'accept')
+    uni.showToast({
+      title: accepted ? '已授权；发送需接入后端' : '未获得订阅授权',
+      icon: 'none'
+    })
+  } catch (e) {
+    error.value = errorText(e)
+  }
+}
+onShow(load)
+</script>

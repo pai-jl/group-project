@@ -1,0 +1,90 @@
+{
+  "auth": {
+    "owner": "B",
+    "methods": ["login"]
+  },
+  "user": {
+    "owner": "B",
+    "methods": ["getProfile", "updateProfile", "listPublicContent"]
+  },
+  "upload": {
+    "owner": "B",
+    "methods": ["create", "confirm"]
+  },
+  "conversation": {
+    "owner": "C",
+    "methods": ["open", "list"]
+  },
+  "message": {
+    "owner": "C",
+    "methods": ["send", "list"]
+  },
+  "notification": {
+    "owner": "C",
+    "methods": ["list", "markRead"]
+  },
+  "favorite": {
+    "owner": "B",
+    "methods": ["set", "list"]
+  },
+  "myContent": {
+    "owner": "B",
+    "methods": ["list"]
+  },
+  "report": {
+    "owner": "C",
+    "methods": ["create", "adminResolve"]
+  },
+  "plan": {
+    "owner": "A",
+    "methods": [
+      "create",
+      "update",
+      "get",
+      "list",
+      "close",
+      "complete",
+      "getCandidates"
+    ]
+  },
+  "invitation": {
+    "owner": "A",
+    "methods": ["create", "list", "respond", "cancel"]
+  },
+  "help": {
+    "owner": "A",
+    "methods": ["create", "get", "list", "update", "complete", "getCandidates"]
+  },
+  "market": {
+    "owner": "B",
+    "methods": [
+      "create",
+      "update",
+      "get",
+      "list",
+      "close",
+      "reserve",
+      "getCandidates"
+    ]
+  },
+  "reservation": {
+    "owner": "B",
+    "methods": ["respond", "complete"]
+  },
+  "lostFound": {
+    "owner": "C",
+    "methods": ["create", "update", "get", "list", "markReturned"]
+  },
+  "event": {
+    "owner": "A",
+    "methods": ["list", "get", "createPlan"]
+  },
+  "appraisal": {
+    "owner": "B",
+    "methods": ["estimate"]
+  },
+  "subscription": {
+    "owner": "C",
+    "methods": ["send"]
+  }
+}

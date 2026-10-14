@@ -1,0 +1,22 @@
+{
+  "name": "校园像素生活广场",
+  "appid": "",
+  "description": "三人团队 uni-app 双端骨架",
+  "versionName": "0.1.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "uniStatistics": { "enable": false },
+  "h5": {
+    "router": {
+      "mode": "hash"
+    },
+    "title": "校园像素生活广场"
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": true
+    },
+    "usingComponents": true
+  }
+}

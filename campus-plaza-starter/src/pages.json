@@ -1,0 +1,107 @@
+{
+  "pages": [
+    {
+      "path": "pages/plaza/index",
+      "style": {
+        "navigationBarTitleText": "生活广场"
+      }
+    },
+    {
+      "path": "pages/messages/index",
+      "style": {
+        "navigationBarTitleText": "消息中心"
+      }
+    },
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "我的家"
+      }
+    },
+    {
+      "path": "pages/market/index",
+      "style": {
+        "navigationBarTitleText": "二手集市"
+      }
+    },
+    {
+      "path": "pages/partner/index",
+      "style": {
+        "navigationBarTitleText": "找搭子"
+      }
+    },
+    {
+      "path": "pages/lost/index",
+      "style": {
+        "navigationBarTitleText": "失物招领"
+      }
+    },
+    {
+      "path": "pages/help/index",
+      "style": {
+        "navigationBarTitleText": "技能互助"
+      }
+    },
+    {
+      "path": "pages/content/detail",
+      "style": {
+        "navigationBarTitleText": "内容详情"
+      }
+    },
+    {
+      "path": "pages/content/publish",
+      "style": {
+        "navigationBarTitleText": "发布"
+      }
+    },
+    {
+      "path": "pages/partner/candidates",
+      "style": {
+        "navigationBarTitleText": "计划推荐"
+      }
+    },
+    {
+      "path": "pages/messages/chat",
+      "style": {
+        "navigationBarTitleText": "联系消息"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "同学主页"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#f5f5eb",
+    "backgroundColor": "#f5f5eb"
+  },
+  "tabBar": {
+    "color": "#7c8478",
+    "selectedColor": "#456957",
+    "borderStyle": "white",
+    "backgroundColor": "#fffef8",
+    "list": [
+      {
+        "pagePath": "pages/plaza/index",
+        "text": "广场",
+        "iconPath": "static/tabs/plaza.png",
+        "selectedIconPath": "static/tabs/plaza-active.png"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "text": "消息",
+        "iconPath": "static/tabs/message.png",
+        "selectedIconPath": "static/tabs/message-active.png"
+      },
+      {
+        "pagePath": "pages/home/index",
+        "text": "我的",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      }
+    ]
+  }
+}

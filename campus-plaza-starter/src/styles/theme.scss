@@ -1,0 +1,126 @@
+page {
+  background: #f5f5eb;
+  color: #26392e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 28rpx;
+}
+view,
+text,
+input,
+textarea,
+button {
+  box-sizing: border-box;
+}
+button {
+  font-size: 26rpx;
+  line-height: 1.5;
+  margin: 0;
+  border-radius: 12rpx;
+}
+button::after {
+  border: 0;
+}
+.page {
+  max-width: 960rpx;
+  margin: 0 auto;
+  padding: 30rpx 28rpx 52rpx;
+}
+.title {
+  font-size: 44rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+}
+.subtitle,
+.muted {
+  color: #7a8377;
+  font-size: 25rpx;
+  line-height: 1.8;
+}
+.panel {
+  background: #fffef8;
+  border: 2rpx solid #e1e5d6;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin: 24rpx 0;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 24rpx;
+}
+.primary {
+  background: #456957;
+  color: #fffef8;
+  padding: 18rpx 26rpx;
+}
+.secondary {
+  background: #edf0e5;
+  color: #456957;
+  padding: 18rpx 26rpx;
+}
+.danger {
+  background: #f6e8df;
+  color: #9c4d36;
+  padding: 18rpx 26rpx;
+}
+.tag {
+  display: inline-block;
+  padding: 5rpx 14rpx;
+  background: #edf0e5;
+  color: #52664f;
+  border-radius: 7rpx;
+  font-size: 23rpx;
+}
+.input {
+  width: 100%;
+  background: #f5f6ed;
+  border: 2rpx solid #dde2d4;
+  border-radius: 12rpx;
+  padding: 18rpx;
+  height: 82rpx;
+  font-size: 28rpx;
+}
+.textarea {
+  height: 160rpx;
+}
+.label {
+  display: block;
+  margin: 22rpx 0 10rpx;
+  font-size: 26rpx;
+}
+.error {
+  color: #a34d36;
+  padding: 18rpx 0;
+  line-height: 1.7;
+}
+.thumb {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 12rpx;
+  background: #edf0e5;
+}
+.section-title {
+  font-size: 31rpx;
+  font-weight: 650;
+  margin-top: 30rpx;
+}
+.link {
+  color: #456957;
+  font-weight: 600;
+}
+.body {
+  white-space: pre-wrap;
+  line-height: 1.9;
+}

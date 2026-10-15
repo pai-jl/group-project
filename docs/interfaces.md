@@ -10,6 +10,12 @@
 
 列表统一 `{ items: [], nextCursor: null }`，pageSize 默认 20，最多 50；cursor 必须由服务端返回。演示用 offset 字符串，真实数据库可使用不透明 cursor。所有内容 ID 是字符串，详情与修改统一用 `{id}`；plan.getCandidates 使用 `{planId}`。
 
+## 第一阶段列表与广场交互补充
+
+- 搭子和技能互助列表组合使用既有 `keyword`、`category`、`status`、`cursor`、`pageSize`。`category` 为与发布内容一致的完整类别/技能字符串，`status` 为既有状态值；空字符串表示不限制。后端先完成筛选再分页，后续页保留同一组已生效条件；只编辑输入框而未提交搜索时，不影响加载更多。
+- `FeedList` 的可选属性为 `showFilters: Boolean`（默认关闭）、`categoryOptions: Array<String>`、`statusOptions: Array<{label,value}>`。预设类别用于快捷选择，允许手动填写已有分类；不得把它们当成新的公共枚举或限制发布。
+- 广场坐标按背景宽高归一化到 `[0,1]`。移动工具的 `createPlazaWalker` 对外提供 `getState()`、`moveTo(point)`、`advance(seconds)`、`stop()`：目的地投影到闭合步道，沿较短方向行走，不穿越中心树岛；这是本地场景状态，不持久化业务数据，也不表示多人位置同步。
+
 ## 数据基础
 
 contentType 为 plan / help / market / lost_found / event。当前 content/detail 只支持前四项；event 在第二周实现对应入口再开放通知。
